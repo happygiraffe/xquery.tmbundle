@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>declare variable \$$1 ${2:xs:integer} external</string>
+	<key>name</key>
+	<string>variable (external)</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>declare</string>
+	<key>uuid</key>
+	<string>E424F864-AC2F-4AD7-8144-55752DB6BD62</string>
+</dict>
+</plist>

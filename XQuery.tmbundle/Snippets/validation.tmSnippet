@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>declare validation ${1:lax|strict|skip}</string>
+	<key>name</key>
+	<string>validation</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>declare</string>
+	<key>uuid</key>
+	<string>6D8B0CE8-54B3-4C02-A919-EF5909CA7398</string>
+</dict>
+</plist>

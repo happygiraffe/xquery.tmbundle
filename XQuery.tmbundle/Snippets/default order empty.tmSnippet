@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>declare default order empty ${1:greatest|least}</string>
+	<key>name</key>
+	<string>default order empty</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>declare</string>
+	<key>uuid</key>
+	<string>1A20E11F-ABDE-40E5-AFB7-DF9B6A1F6EA3</string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>declare base-uri "$0"</string>
+	<key>name</key>
+	<string>base-uri</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>declare</string>
+	<key>uuid</key>
+	<string>933E7C92-F331-41EB-9005-3AA788D9F580</string>
+</dict>
+</plist>

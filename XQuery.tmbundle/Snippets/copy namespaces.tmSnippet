@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>declare copy-namespaces ${1:preserve|no-preserve}, ${2:inherit|no-inherit}</string>
+	<key>name</key>
+	<string>copy namespaces</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>declare</string>
+	<key>uuid</key>
+	<string>46C8CDEB-79AF-4892-BE72-B08DF25E5DAB</string>
+</dict>
+</plist>
