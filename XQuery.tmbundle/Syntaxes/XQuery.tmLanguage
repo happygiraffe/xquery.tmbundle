@@ -28,7 +28,7 @@
 			<key>end</key>
 			<string>\1</string>
 			<key>name</key>
-			<string>string.quoted.xquery</string>
+			<string>string.quoted.other.xquery</string>
 			<key>patterns</key>
 			<array>
 				<dict>
