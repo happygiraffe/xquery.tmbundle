@@ -32,38 +32,8 @@
 			<string>#comment</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.function.xquery</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.xquery</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.parameters.begin.xquery</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>variable.parameter.function.xquery</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.parameters.end.xquery</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>((?:declare|define)\s+function)\s+((?:[\w_-]+:)?[\w_-]+)\s*([(])(.*)([)])</string>
-			<key>name</key>
-			<string>meta.function.xquery</string>
+			<key>include</key>
+			<string>#func_decl</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -107,6 +77,91 @@
 			<string>&amp;[^;]*;</string>
 			<key>name</key>
 			<string>invalid.illegal.disallowed-entity</string>
+		</dict>
+		<key>func_decl</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x:
+			          (           # capture for highlighting.
+  		            define    # literals
+  		            \s+
+  		            function
+		            )
+		            \s+
+		            (           # Function name (QName).
+  		            (?:       # optional prefix
+  		              [\w-]+
+  		              :
+  		              )?
+  		            [\w-]+    # local name.
+		            )
+		            \s*         # optional whitespace
+		            (?=\()      # Peek ahead for an open paren
+		            )</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.directive.define-function.xquery</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.xquery</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?={)</string>
+			<key>name</key>
+			<string>meta.definition.function.xquery</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.directive.as.xquery</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.xquery</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.directive.external.xquery</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?x:
+			              ( as )                # keyword
+			              \s+                   
+			              ( xs: [\w-]+ )        # type name
+			              ( \s+ external )?   # optional keyword
+          			    )</string>
+					<key>name</key>
+					<string>meta.definition.function.returns.xquery</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\(</string>
+					<key>end</key>
+					<string>(?=\))</string>
+					<key>name</key>
+					<string>meta.definition.param-list.xquery</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<key>literal</key>
 		<dict>
