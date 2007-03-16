@@ -42,6 +42,15 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>atomic_type</key>
+		<dict>
+			<key>match</key>
+			<string>(?x:
+                xs: [\w-]+      # e.g. xs:string
+          		  )</string>
+			<key>name</key>
+			<string>storage.type.atomic.xquery</string>
+		</dict>
 		<key>comment</key>
 		<dict>
 			<key>begin</key>
@@ -159,9 +168,36 @@
 							<key>include</key>
 							<string>#variable</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#kind_of_type</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#atomic_type</string>
+						</dict>
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>kind_of_type</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x:
+		            (   document-node
+		              | processing-instruction
+		              | comment
+		              | text
+		              | node
+		              | element
+		              | attribute
+  	              )
+  	            \(
+          		  )</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>storage.type.kind_of.xquery</string>
 		</dict>
 		<key>literal</key>
 		<dict>
