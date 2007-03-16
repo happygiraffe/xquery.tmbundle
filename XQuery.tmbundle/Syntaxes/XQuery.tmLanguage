@@ -2,9 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>comment</key>
+	<string>http://www.w3.org/TR/2003/WD-xquery-20030502/#nt-bnf</string>
 	<key>fileTypes</key>
 	<array>
 		<string>xqy</string>
+		<string>xquery</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>{\s*$</string>
@@ -17,41 +20,16 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>match</key>
-			<string>\b(xquery\s+version|encoding|module\s+namespace|declare\s+namespace|declare\s+boundary-space|declare\s+default\s+(element|function)\s+namespace|declare\s+option|declare\s+ordering\s+(ordered|unordered)|declare\s+default\s+order\s+empty\s+(greatest|least)|declare\s+copy-namespaces\s+(preserve|no-preserve)\s+,\s+(inherit|no-inherit)|declare\s+default\s+collation|declare\s+base-uri|import\s+schema|import\s+module|declare\s+variable|declare\s+construction|declare\s+function|for|in|at|let|where|(stable)?\s+order\s+by|ascending|descending|empty|greatest|least|collation|some|every|satisfies|typeswitch|default|return|case|if|then|else|and|or|to|div|idiv|mod|union|intersect|except|instance\s+of|treat\s+as|castable\s+as|cast\s+as|eq|ne|lt|le|gt|ge|lax|strict|child|descendant|attribute|self|descendant-or-self|following-sibling|following|parent|ancestor|preceding-sibling|preceding|ancestor-or-self|ordered|unordered|document|element|text|comment|processing-instruction|empty-sequence|node|document-node|schema-attribute)\b</string>
-			<key>name</key>
-			<string>keyword.control.xquery</string>
+			<key>include</key>
+			<string>#literal</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>(["\'])</string>
-			<key>end</key>
-			<string>\1</string>
-			<key>name</key>
-			<string>string.quoted.other.xquery</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>&amp;[^;]+;</string>
-					<key>name</key>
-					<string>constant.character.escape.xquery</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#variable</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>\(:</string>
-			<key>end</key>
-			<string>:\)</string>
-			<key>name</key>
-			<string>comment.block.xquery</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\$([\w-]+:)?[\w-]+</string>
-			<key>name</key>
-			<string>variable.other.xquery</string>
+			<key>include</key>
+			<string>#comment</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -92,6 +70,183 @@
 			<string>text.xml</string>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>comment</key>
+		<dict>
+			<key>begin</key>
+			<string>\(:</string>
+			<key>end</key>
+			<string>:\)</string>
+			<key>name</key>
+			<string>comment.block.xquery</string>
+		</dict>
+		<key>entity</key>
+		<dict>
+			<key>match</key>
+			<string>(?x:
+			  &amp;               # Literal ampersand
+			  (?: amp         # Predefined entity names
+			    | lt          
+			    | gt          
+			    | quot        
+			    | apos        
+			    | \# \d+      # Decimal character reference
+			    | \# x \h+   	# Hex character reference
+			    )
+			    ;             # Trailing semicolon.
+			)</string>
+			<key>name</key>
+			<string>constant.character.escape.xquery</string>
+		</dict>
+		<key>entity_bad</key>
+		<dict>
+			<key>comment</key>
+			<string>This will match valid entities too, so always match them first!</string>
+			<key>match</key>
+			<string>&amp;[^;]*;</string>
+			<key>name</key>
+			<string>invalid.illegal.disallowed-entity</string>
+		</dict>
+		<key>literal</key>
+		<dict>
+			<key>comment</key>
+			<string>[91] Literal</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#string_double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string_single</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#number</string>
+				</dict>
+			</array>
+		</dict>
+		<key>number</key>
+		<dict>
+			<key>comment</key>
+			<string>[92] NumericLiteral</string>
+			<key>match</key>
+			<string>(?x:         # turn on extended mode 
+                -?          # an optional minus 
+                (?: 
+                  0         # a zero 
+                  |         # ...or... 
+                  [1-9]     # a 1-9 character 
+                  \d*       # followed by zero or more digits 
+                  ) 
+                (?: 
+                  \.        # a period 
+                  \d+       # followed by one or more digits 
+                  (?: 
+                    [eE]    # an e character 
+                    [+-]?   # followed by an option +/- 
+                    \d+     # followed by one or more digits 
+                    )?      # make exponent optional 
+                  )?        # make decimal portion optional 
+                )</string>
+			<key>name</key>
+			<string>constant.numeric.xquery</string>
+		</dict>
+		<key>string_double</key>
+		<dict>
+			<key>begin</key>
+			<string>"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.xquery</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>This is identical to a single quoted string.</string>
+			<key>end</key>
+			<string>"</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.xquery</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.single.xquery</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#entity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#entity_bad</string>
+				</dict>
+			</array>
+		</dict>
+		<key>string_single</key>
+		<dict>
+			<key>begin</key>
+			<string>'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.xquery</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>This is identical to a double quoted string.</string>
+			<key>end</key>
+			<string>'</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.xquery</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.single.xquery</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#entity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#entity_bad</string>
+				</dict>
+			</array>
+		</dict>
+		<key>variable</key>
+		<dict>
+			<key>comment</key>
+			<string>Basically, a QName.</string>
+			<key>match</key>
+			<string>(?x:
+		            \$        # Literal dollar
+		            (?:
+		              [\w-]+  # word char or hyphens
+		              :       # literal colon
+		              )?
+		            [\w-]+    # word char or hyphens
+          		  )</string>
+			<key>name</key>
+			<string>variable.other.readwrite.global.xquery</string>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>source.xquery</string>
 	<key>uuid</key>
