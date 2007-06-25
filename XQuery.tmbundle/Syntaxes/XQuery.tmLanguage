@@ -37,6 +37,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#keyword</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>text.xml</string>
 		</dict>
 	</array>
@@ -179,6 +183,13 @@
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>keyword</key>
+		<dict>
+			<key>match</key>
+			<string>\b(for|let|where|order by|return|if|then|else|typeswitch|case|default)\b</string>
+			<key>name</key>
+			<string>keyword.control.xquery</string>
 		</dict>
 		<key>kind_of_type</key>
 		<dict>
