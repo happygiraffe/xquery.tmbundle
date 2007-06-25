@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>declare function $1 ( $2 ) ${3:as ${4:xs:integer}} {
+	<string>define function ${1:name} ( $2 ) ${3:as ${4:xs:integer}}
+{
 	$0
 }
 </string>
@@ -12,7 +13,7 @@
 	<key>scope</key>
 	<string>source.xquery</string>
 	<key>tabTrigger</key>
-	<string>declare</string>
+	<string>func</string>
 	<key>uuid</key>
 	<string>62FDEC77-4F4D-41E3-99F8-A7DA2C4911D0</string>
 </dict>

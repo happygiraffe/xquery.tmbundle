@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>declare variable \$$1 ${2:xs:integer} ${3::= $0}</string>
+	<string>declare variable \$${1:varname} ${2:xs:string} ${3::= $0}</string>
 	<key>name</key>
 	<string>variable</string>
 	<key>scope</key>
 	<string>source.xquery</string>
 	<key>tabTrigger</key>
-	<string>declare</string>
+	<string>var</string>
 	<key>uuid</key>
 	<string>EF179B1F-603A-4D1E-BF08-9B11C34EBACA</string>
 </dict>

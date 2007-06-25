@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>declare default element namespace = "$0"</string>
+	<string>default element namespace = "$0"</string>
 	<key>name</key>
 	<string>default element ns</string>
 	<key>scope</key>
 	<string>source.xquery</string>
 	<key>tabTrigger</key>
-	<string>declare</string>
+	<string>default</string>
 	<key>uuid</key>
 	<string>561F6A9C-4A93-4A1D-919C-A92208606E68</string>
 </dict>

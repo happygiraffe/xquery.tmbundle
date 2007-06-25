@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>declare namespace ${1:myns} = "${2:http://example.com/myns}"
+	<string>module "${1:http://www.w3.org/2003/05/xpath-functions}"
 </string>
 	<key>name</key>
-	<string>namespace</string>
+	<string>module "…"</string>
 	<key>scope</key>
 	<string>source.xquery</string>
 	<key>tabTrigger</key>
-	<string>ns</string>
+	<string>mod</string>
 	<key>uuid</key>
-	<string>B2525B3A-B11D-46D0-8616-6B7275566F8A</string>
+	<string>425459CA-101A-456E-ADD5-44F2DB81BDFC</string>
 </dict>
 </plist>
