@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>define function ${1:name} ( $2 ) ${3:as ${4:xs:integer}}
+	<string>define function ${1:name}($2)
+${3:as ${4:xs:string}}
 {
 	$0
 }
